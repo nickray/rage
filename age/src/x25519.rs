@@ -6,7 +6,7 @@ use age_core::{
     secrecy::{ExposeSecret, SecretString},
 };
 use bech32::{ToBase32, Variant};
-use rand_7::rngs::OsRng;
+use rand::rngs::OsRng;
 use std::fmt;
 use x25519_dalek::{EphemeralSecret, PublicKey, StaticSecret};
 use zeroize::Zeroize;

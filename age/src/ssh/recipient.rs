@@ -13,7 +13,7 @@ use nom::{
 };
 use rand::rngs::OsRng;
 use rsa::{padding::PaddingScheme, PublicKey};
-use sha2_09::Sha256;
+use sha2::Sha256;
 use std::fmt;
 use x25519_dalek::{EphemeralSecret, PublicKey as X25519PublicKey, StaticSecret};
 
@@ -138,7 +138,7 @@ impl crate::Recipient for Recipient {
             Recipient::SshEd25519(ssh_key, ed25519_pk) => {
                 let pk: X25519PublicKey = ed25519_pk.to_montgomery().to_bytes().into();
 
-                let mut rng = rand_7::rngs::OsRng;
+                let mut rng = OsRng;
                 let esk = EphemeralSecret::new(&mut rng);
                 let epk: X25519PublicKey = (&esk).into();
 
